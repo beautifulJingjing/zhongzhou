@@ -1,0 +1,5 @@
+$vm_base: 3840;
+
+@function pxTovw($px) {
+    @return ($px / $vm_base) * 100vw;
+}
