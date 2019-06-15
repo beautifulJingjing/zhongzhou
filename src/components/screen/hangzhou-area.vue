@@ -28,13 +28,24 @@
                     <dot-popper :data="item.info" @close="closeAreaDot" @clickDetail="clickDetail" :visible="item.showPop"></dot-popper>
                     <div
                             :class="[{'active': hoverIndex === index}, 'type' + item.type]"
-                            v-if="popperOptions"
+                            v-if="popperOptions && item.type !== 1"
                             @mouseenter="mouseenterAreaDot(item, index, $event)"
                             @mouseleave="mouseenterAreaDot()"
                             @click="clickAreaDot(item, index)"
                             slot="reference"></div>
                 </el-popover>
+                <div
+                        :class="[{'active': hoverIndex === index}, 'type' + item.type]"
+                        v-if="popperOptions && item.type === 1"
+                        @mouseenter="mouseenterAreaDot(item, index, $event)"
+                        @mouseleave="mouseenterAreaDot()"
+                        @click="clickDetail(item, 1)"
+                        slot="reference"></div>
             </div>
+        </div>
+        <div class="file-review_wrapper" v-show="showPreview" @click.self="closePreview">
+            <img src="@/assets/screen/site-info1.png" alt="" v-if="currentClick && currentClick.type === 2">
+            <img src="@/assets/screen/site-info2.png" alt="" v-if="currentClick && currentClick.type === 3">
         </div>
         <!--<span @click="enlarge(true)" style="color:#fff">放大</span>
         <span @click="enlarge(false)" style="color:#fff">缩小</span>-->
@@ -60,6 +71,7 @@
         data() {
             return {
                 showPop: false,
+                showPreview: false,
                 hoverIndex: -1,
                 currentClick: null,
                 areaParams: {
@@ -75,10 +87,17 @@
             };
         },
         methods: {
-            clickDetail(){
-                this.type = '1';
-                this.iframeSrc = 'https://zhongzhou-3d.isyscore.com?access_token=6277368bbe3f4634b263a46cfe901ba6J5V&account_id=3434';
-                this.iframeBulletShow = true;
+            clickDetail(item, type){
+                // 链接跳转
+                if (type === 1) {
+                    this.iframeSrc =
+                            item.id === -1 ? 'https://yizhan-3d.isyscore.com?access_token=6277368bbe3f4634b263a46cfe901ba6J5V&account_id=3434' : 'https://zhongzhou-3d.isyscore.com?access_token=6277368bbe3f4634b263a46cfe901ba6J5V&account_id=3434';
+                    this.iframeBulletShow = true;
+                }
+                // 工地图片预览
+                else {
+                    this.showPreview = true;
+                }
             },
             changeIframe(val) {
 //                console.log(val);
@@ -102,6 +121,9 @@
             },
             closeAreaDot(item) {
                 this.currentClick.showPop = false;
+            },
+            closePreview() {
+                this.showPreview = false;
             },
             adjustDot(){
                 let $el = this.$refs.area;
@@ -278,6 +300,25 @@
 
         .iframe-bullet-wrapper {
             z-index: 10000;
+        }
+    }
+    .file-review_wrapper {
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, .5);
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        img {
+            display: block;
+            margin: 0 auto;
+            max-height: 100%;
+            max-width: calc(100% - 180px);
         }
     }
 

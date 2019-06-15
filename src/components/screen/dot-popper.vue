@@ -37,7 +37,6 @@ export default {
             playFirst:true,
             swiperOption:{
                 autoplay:true,
-//                loop:true,
                 pagination:{
                     el:'.swiper-pagination',
                 },
@@ -57,7 +56,7 @@ export default {
     },
     methods:{
         clickDetail(){
-            this.$emit('clickDetail')
+            this.$emit('clickDetail', null, 2)
         },
         closePop(){
             this.$emit('close')

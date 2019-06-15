@@ -1149,7 +1149,6 @@
             left: element.offsetLeft,
             top: element.offsetTop
         };
-console.warn(elementRect)
         elementRect.right = elementRect.left + elementRect.width;
         elementRect.bottom = elementRect.top + elementRect.height;
 
