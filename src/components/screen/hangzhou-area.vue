@@ -22,11 +22,13 @@
                 <el-popover
                         placement="left"
                         popper-class="popper-class"
+                        :popper-options="popperOptions"
                         :visible-arrow="false"
                         v-model="item.showPop">
                     <dot-popper :data="item.info" @close="closeAreaDot" @clickDetail="clickDetail" :visible="item.showPop"></dot-popper>
                     <div
                             :class="[{'active': hoverIndex === index}, 'type' + item.type]"
+                            v-if="popperOptions"
                             @mouseenter="mouseenterAreaDot(item, index, $event)"
                             @mouseleave="mouseenterAreaDot()"
                             @click="clickAreaDot(item, index)"
@@ -48,7 +50,6 @@
 
     export default {
         name: "HangzhouMap",
-        mixins: [Popper],
         components: {
             DotPopper,
             IframeBullet
@@ -66,6 +67,7 @@
                     'linan': [2216, 1229,0],
                     'fuyang': [1956, 1465,0]
                 },
+                popperOptions: null,
                 iframeBulletShow: false,
                 iframeSrc: '',
                 dotList: [],
@@ -167,6 +169,11 @@
                         this.adjustDot();
                     })
                 }, 500)
+            },
+            setPopperOption(el) {
+                this.popperOptions = {
+                    boundariesElement: el
+                }
             }
         },
 //        watch:{

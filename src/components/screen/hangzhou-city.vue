@@ -213,6 +213,9 @@ export default {
     mounted(){
         let hzMap=document.getElementById("m_HZ");
         this.adjust(hzMap);
+        window.addEventListener('resize',  () => {
+            this.adjustDot();
+        })
     }
 }
 </script>

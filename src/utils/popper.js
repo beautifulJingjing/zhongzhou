@@ -497,6 +497,7 @@
         var boundaries = {};
         var width, height;
         if (boundariesElement === 'window') {
+
             var body = root.document.body,
                 html = root.document.documentElement;
 
@@ -510,6 +511,7 @@
                 left: 0
             };
         } else if (boundariesElement === 'viewport') {
+
             var offsetParent = getOffsetParent(this._popper);
             var scrollParent = getScrollParent(this._popper);
             var offsetParentRect = getOffsetRect(offsetParent);
@@ -541,6 +543,7 @@
                     bottom: boundariesElement.clientHeight
                 };
             } else {
+
                 boundaries = getOffsetRect(boundariesElement);
             }
         }
@@ -1146,7 +1149,7 @@
             left: element.offsetLeft,
             top: element.offsetTop
         };
-
+console.warn(elementRect)
         elementRect.right = elementRect.left + elementRect.width;
         elementRect.bottom = elementRect.top + elementRect.height;
 

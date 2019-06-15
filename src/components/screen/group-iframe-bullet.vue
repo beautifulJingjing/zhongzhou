@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       // videoSrc: require('@/assets/screen/operate-bg.mp4')
-      videoSrc: '' // require('@/assets/screen/zhongzhou.mp4')
+      videoSrc: require('@/assets/screen/zhongzhou.mp4')
     };
   },
   props: {

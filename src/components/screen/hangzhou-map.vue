@@ -1,7 +1,7 @@
 <template>
     <div class="hangzhou-map-wrapper">
         <hangzhou-city v-if="!currentArea" @set-area="setArea"></hangzhou-city>
-        <hangzhou-area :current-area="currentArea[0]" v-else></hangzhou-area>
+        <hangzhou-area :current-area="currentArea[0]" v-else ref="area"></hangzhou-area>
         <!--<linan-area v-show="currentArea === 'linan'"></linan-area>-->
         <div class="go-back" :class="{cursor:currentArea}" @click="hideAreaMap" >
             <video src="../../assets/screen/position.mp4" autoplay loop ></video>
@@ -20,7 +20,7 @@
             </div>
             <div class="tips-item" v-show="currentType < 2">
                 <i class="wy"></i>
-                <span>物业</span>
+                <span>物业管理</span>
             </div>
         </div>
     </div>
@@ -43,6 +43,9 @@
                 currentArea: undefined,
             };
         },
+        mounted() {
+
+        },
         methods: {
             hideAreaMap(){
                 this.currentArea = undefined;
@@ -53,6 +56,9 @@
             },
             setArea(val) {
                 this.currentArea = val;
+                this.$nextTick(() => {
+                    this.$refs.area.setPopperOption(this.$el);
+                })
             }
         },
         computed: {

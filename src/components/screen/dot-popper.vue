@@ -1,17 +1,15 @@
 <template>
     <div class="dot-popper">
         <div class="popper-inner">
-            <div class="popper-title">{{data.title}}</div>
-            <div>
-                <div class="popper-button" @click.stop="clickDetail()">查看详情</div>
-                <swiper :options="swiperOption">
-                    <swiper-slide v-for="(item,index) in data.imgList" :key="index">
-                        <img :src="item.url" alt="">
-                        <div class="popper-content">{{item.content}}</div>
-                    </swiper-slide>
-                    <div class="swiper-pagination" slot="pagination"></div>
-                </swiper>
-            </div>
+            <div class="popper-title">{{'智慧' + (currentType === 1 ? '物业' : '工地' ) + '概况'}}</div>
+            <div class="popper-button" @click.stop="clickDetail()">查看详情</div>
+            <swiper :options="swiperOption">
+                <swiper-slide v-for="(item,index) in data.imgList" :key="index">
+                    <img :src="item.url" alt="">
+                    <div class="popper-content">{{item.content}}</div>
+                </swiper-slide>
+                <div class="swiper-pagination" slot="pagination"></div>
+            </swiper>
             <div class="close-button" @click.stop="closePop()"></div>
         </div>
         <img src="~@/assets/screen/popper-first.webp" v-show="playFirst">
@@ -53,16 +51,9 @@ export default {
         currentIndex(){
             return this.$store.state.dotCurIndex
         },
-        /*visible(){
-            return !this.currentIndex===-1
-        },
-        data(){
-            console.log(this.$store.state.dotList, this.$store.state.dotCurIndex)
-            let value = this.$store.state.dotList[this.$store.state.dotCurIndex]
-            /!*console.log(this.$store.state.dotList[this.currentIndex])*!/
-            return value || {}
-        }*/
-
+        currentType(){
+            return this.$store.state.currentType;
+        }
     },
     methods:{
         clickDetail(){
@@ -98,12 +89,16 @@ export default {
     outline: none;
     top: pxTovw(-277);
     height: pxTovw(594);
-    padding: pxTovw(48);
     box-sizing: border-box;
     color: #7ADFFF;
     transition: all .5s;
     .popper-inner{
         /*background: #182631;*/
+        position: absolute;
+        padding: pxTovw(48);
+        top:0;
+        left:0;
+        z-index: 2;
         img {
             width: pxTovw(371);
             height: pxTovw(165);
@@ -153,6 +148,7 @@ export default {
 
     .popper-button {
         position: absolute;
+        word-break: keep-all;
         top: pxTovw(10);
         left: pxTovw(350);
         color: #90FEA0;
@@ -165,8 +161,8 @@ export default {
         position: absolute;
         right:5px;
         bottom: 5px;
-        width: 40px;
-        height:40px;
+        width: pxTovw(40);
+        height:pxTovw(40);
         cursor:pointer;
         z-index:2;
     }

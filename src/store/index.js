@@ -43,9 +43,9 @@ export default new Vuex.Store({
 
             /*富阳区*/
 
-            {id:9,type:1,x:388,y:587,title:'洞桥营地',area:'fuyang',info:{title:'智慧工地概况',imgList:[{url:require('../assets/screen/imgs/9.png'),content:'包含了集体营房、室内训练馆、志愿者楼及员工宿舍、小团体营房四个房建项目，总建筑面积为15820m2；以及施工图范围内的配套、附属及市政园林工程。房建三类工程'}],}},
-            {id:11,type:1,x:1494,y:130,title:'警察学校',area:'fuyang',info:{title:'智慧工地概况',imgList:[{url:require('../assets/screen/imgs/11.png'),content:'本工程为迁建项目：建筑面积34998.3平方米（不含架空层，其中地上建筑面积27793.9）'}],}},
-            {id:18,type:1,x:1336,y:284,title:'富阳区高桥公共租赁房工程',area:'fuyang',info:{title:'智慧工地概况',imgList:[{url:require('../assets/screen/imgs/18.png'),content:'地上17层，地下1层，高度49.47米，地上建筑面积46872.02m2， 地下建筑面积15073.53m2 总建筑面积61945.55平方米，民用二类。'}],}},
+            {id:9,type:3,x:388,y:587,title:'洞桥营地',area:'fuyang',info:{title:'智慧工地概况',imgList:[{url:require('../assets/screen/imgs/9.png'),content:'包含了集体营房、室内训练馆、志愿者楼及员工宿舍、小团体营房四个房建项目，总建筑面积为15820m2；以及施工图范围内的配套、附属及市政园林工程。房建三类工程'}],}},
+            {id:11,type:3,x:1494,y:130,title:'警察学校',area:'fuyang',info:{title:'智慧工地概况',imgList:[{url:require('../assets/screen/imgs/11.png'),content:'本工程为迁建项目：建筑面积34998.3平方米（不含架空层，其中地上建筑面积27793.9）'}],}},
+            {id:18,type:2,x:1336,y:284,title:'富阳区高桥公共租赁房工程',area:'fuyang',info:{title:'智慧工地概况',imgList:[{url:require('../assets/screen/imgs/18.png'),content:'地上17层，地下1层，高度49.47米，地上建筑面积46872.02m2， 地下建筑面积15073.53m2 总建筑面积61945.55平方米，民用二类。'}],}},
 
 
         ],
